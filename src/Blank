@@ -1,0 +1,3 @@
+#!/bin/bash
+( echo "#Blanking..."; wodim blank=all ) | zenity --progress --title "Blank CD-RW" --auto-close --pulsate 
+eject -T /dev/sr0

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "Sending "$1" to "$2
+echo -n "["
+while read line; do
+	echo $line | sendxmpp $2
+	echo -n "×"
+done < "$1"
+echo "]"
+exit 0
+
