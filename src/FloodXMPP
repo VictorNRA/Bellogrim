@@ -8,4 +8,3 @@ while read line; do
 done < "$1"
 echo "]"
 exit 0
-

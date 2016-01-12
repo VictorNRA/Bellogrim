@@ -1,7 +1,5 @@
 #!/bin/bash
-#
 PATH=/usr/local/bin:/usr/bin:/bin
-#
 From=$(basename "$1" .JPG)
 mv "$1" $From.jpg
 exit 0
