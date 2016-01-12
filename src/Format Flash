@@ -1,0 +1,16 @@
+#!/bin/bash
+Who=`whoami`
+if [ "$Who" != "root" ]; then
+	echo "Only root can create this."
+	kdesudo bash "$0"
+	exit 1
+fi
+Device=`kdialog --getopenfilename "/dev" "sd[b-z]*" --title "Select device for format:"`
+if [ "$Device" == "" ]; then
+	echo "You must select device for format."
+	exit 2
+fi
+Label=`kdialog --inputbox "Label" "Archive" --title "Formatting device…"`
+umount "$Device"
+mkfs.vfat -i "00000000" -r 112 -R 2 -f 1 -F 32 -h 0 -n "$Label" -v "$Device" > /tmp/creatflash.root
+kdialog --textbox /tmp/creatflash.root --title "Formatting complete."
