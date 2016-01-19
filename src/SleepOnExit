@@ -1,0 +1,14 @@
+#!/bin/bash
+if [ "$1" = "" ]; then
+	echo "Usage:"
+	echo ""; echo "$0 Process Name to waiting for."
+	exit 1
+fi
+while :; do
+	sleep 10
+	PID=`pgrep "$1"`
+	if [ "$PID" = "" ]; then
+		Sleep-now
+		exit 0
+	fi
+done
